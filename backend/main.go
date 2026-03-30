@@ -1,38 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"time"
+	"xmr-price-scraper/handlers"
 
-	"github.com/go-rod/rod"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	var url string = "https://www.tradingview.com/symbols/XMREUR/"
+	r := gin.Default()
 
-	browser := rod.New().MustConnect()
-	defer browser.MustClose()
+	r.GET("/price", handlers.GetPrice)
 
-	page := browser.MustPage(url)
-
-	time.Sleep(1000 * time.Millisecond)
-
-	var text string
-
-	for {
-
-		el := page.MustElement(".last-zoF9r75I.js-symbol-last")
-
-		text = el.MustText()
-
-		if text == "" {
-			fmt.Println("The string is empty")
-
-			time.Sleep(1000 * time.Millisecond)
-
-		} else {
-			fmt.Println("Price of XMR:", text)
-			break
-		}
-	}
+	r.Run(":8080")
 }
