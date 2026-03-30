@@ -1,0 +1,17 @@
+:root{
+    --orange: #ff6600;
+    --gray: #191919;
+    --light-gray: #212121;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: var(--gray);
+	font-family: 'Lexend Variable', sans-serif;
+}
