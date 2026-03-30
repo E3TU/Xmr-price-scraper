@@ -1,2 +1,16 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+    import Card from "../components/card.svelte";
+</script>
+
+<div class="container">
+    <Card></Card>
+</div>
+
+<style>
+    .container{
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+    }
+</style>
