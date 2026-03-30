@@ -25,6 +25,7 @@
 		"vite": "^7.3.1"
 	},
 	"dependencies": {
-		"@fontsource-variable/lexend": "^5.2.11"
+		"@fontsource-variable/lexend": "^5.2.11",
+		"@iconify/svelte": "^5.2.1"
 	}
 }
