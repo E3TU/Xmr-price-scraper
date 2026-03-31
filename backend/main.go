@@ -2,7 +2,9 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 
@@ -50,7 +52,10 @@ func GetMoneroPrice(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"price": price})
+	f, _ := strconv.ParseFloat(price, 64)
+	formattedPrice := fmt.Sprintf("%.2f", f)
+
+	c.JSON(http.StatusOK, gin.H{"price": formattedPrice})
 }
 
 func main() {
