@@ -1,5 +1,22 @@
-<script>
+<script lang="ts">
 	import Icon from '@iconify/svelte';
+	import { onMount } from 'svelte';
+
+	const apiEndpoint: string = 'http://localhost:8080/price';
+
+	let price = $state(0);
+
+	async function getPrice() {
+		const response = await fetch(apiEndpoint);
+
+		const data = await response.json();
+
+		price = data.price;
+	}
+
+	onMount(() => {
+		getPrice();
+	});
 </script>
 
 <div class="card-container">
@@ -7,11 +24,11 @@
 	<div class="price-card">
 		<div class="price-wrapper">
 			<Icon icon="logos:monero" width="100" height="100" />
-			<p class="price">200.43€</p>
+			<p class="price">{price}</p>
 		</div>
 		<p class="change">XMR/EUR</p>
 		<p class="last-updated">Last updated: Dec 31, 2026, 10:20</p>
-		<button class="refresh-btn">Refresh Price</button>
+		<button class="refresh-btn" onclick={getPrice}>Refresh Price</button>
 	</div>
 </div>
 
