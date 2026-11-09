@@ -10,7 +10,10 @@
     .container{
         display: flex;
         justify-content: center;
-        height: 100vh;
+        align-items: flex-start;
+        min-height: 100vh;
         width: 100%;
+        padding: 1rem;
+        box-sizing: border-box;
     }
 </style>

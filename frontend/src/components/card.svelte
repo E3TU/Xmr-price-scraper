@@ -41,21 +41,26 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		gap: 10rem;
+		gap: clamp(2rem, 8vw, 10rem);
+		width: 100%;
+		padding: 0 1rem;
+		box-sizing: border-box;
 	}
 	.card-heading {
 		color: var(--orange);
-		margin-top: 5rem;
-		font-size: 3rem;
+		margin-top: clamp(2rem, 10vh, 5rem);
+		font-size: clamp(2rem, 8vw, 3rem);
 		text-shadow: 1px 10px 20px var(--orange);
+		text-align: center;
 	}
 	.price-card {
 		display: flex;
 		flex-direction: column;
-		/* justify-content: center; */
 		align-items: center;
-		width: 40rem;
-		height: 25rem;
+		width: min(40rem, 100%);
+		min-height: 25rem;
+		padding: 1rem;
+		box-sizing: border-box;
 		box-shadow:
 			0px -3px 0px var(--orange),
 			0px 3px 0px var(--orange),
@@ -67,22 +72,29 @@
 	.price-wrapper {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		justify-content: center;
+		gap: clamp(0.5rem, 2vw, 1rem);
 		padding-top: 1rem;
+		flex-wrap: wrap;
+	}
+	:global(.price-wrapper svg) {
+		width: clamp(60px, 15vw, 100px);
+		height: clamp(60px, 15vw, 100px);
 	}
 	.price {
-		font-size: 7rem;
+		font-size: clamp(3rem, 14vw, 7rem);
 	}
 	.change {
-		font-size: 2rem;
+		font-size: clamp(1.25rem, 5vw, 2rem);
 	}
 	.last-updated {
-		font-size: 1.5rem;
+		font-size: clamp(1rem, 4vw, 1.5rem);
+		text-align: center;
 	}
 	.refresh-btn {
-		padding: 1rem 12rem;
+		padding: clamp(0.75rem, 3vw, 1rem) clamp(3rem, 25vw, 12rem);
 		color: var(--white);
-		font-size: 1.35rem;
+		font-size: clamp(1rem, 4vw, 1.35rem);
 		font-weight: bold;
 		font-family: inherit;
 		border: none;
@@ -111,7 +123,16 @@
 	}
 
 	.refresh-btn:focus-visible {
-		outline: 3px solid rgba(255, 255, 255, 0.7);
+		outline: 3px solid rgba(255, 0, 0, 0.7);
 		outline-offset: 2px;
+	}
+
+	@media (max-width: 480px) {
+		.price-card {
+			min-height: auto;
+		}
+		.refresh-btn {
+			width: 100%;
+		}
 	}
 </style>
