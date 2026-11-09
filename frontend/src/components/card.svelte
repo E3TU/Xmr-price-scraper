@@ -5,6 +5,7 @@
 	const apiEndpoint: string = 'http://localhost:8080/price';
 
 	let price = $state(0);
+	let lastUpdated = $state('');
 
 	async function getPrice() {
 		const response = await fetch(apiEndpoint);
@@ -12,6 +13,9 @@
 		const data = await response.json();
 
 		price = data.price;
+		lastUpdated = data.lastUpdated
+			? new Date(data.lastUpdated).toLocaleString()
+			: new Date().toLocaleString();
 	}
 
 	onMount(() => {
@@ -27,7 +31,7 @@
 			<p class="price">{price}</p>
 		</div>
 		<p class="change">XMR/EUR</p>
-		<p class="last-updated">Last updated: Dec 31, 2026, 10:20</p>
+		<p class="last-updated">Last updated: {lastUpdated || '—'}</p>
 		<button class="refresh-btn" onclick={getPrice}>Refresh Price</button>
 	</div>
 </div>

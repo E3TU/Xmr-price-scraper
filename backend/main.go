@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 
@@ -55,7 +56,7 @@ func GetMoneroPrice(c *gin.Context) {
 	f, _ := strconv.ParseFloat(price, 64)
 	formattedPrice := fmt.Sprintf("%.2f", f)
 
-	c.JSON(http.StatusOK, gin.H{"price": formattedPrice})
+	c.JSON(http.StatusOK, gin.H{"price": formattedPrice, "lastUpdated": time.Now().UTC()})
 }
 
 func main() {
